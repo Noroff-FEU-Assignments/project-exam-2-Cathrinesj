@@ -1,0 +1,13 @@
+body {
+  background-image: linear-gradient(to right, #17A6D7, #0C5663)
+}
+
+.opacity {
+  background: rgba(255,255,255,0.75)
+}
+
+.icons {
+  height: 10vmin;
+}
+
+
