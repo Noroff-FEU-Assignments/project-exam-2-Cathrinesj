@@ -1,6 +1,6 @@
 import { UseState, UseEffect } from "react";
 
-function fetchApi (url) {
+function useApi (url) {
     const [data, setData] = UseState([]);
     const [isLoading, setIsLoading] = UseState(false);
     const [isError, setIsError] = UseState(false);
@@ -25,22 +25,6 @@ function fetchApi (url) {
 
     }, [url]);
     return { data, isLoading, isError };
-}
-
-function useApi() {
-    const { data, isLoading, isError } = fetchApi(
-        'https://api.noroff.dev/api/v1/social/',
-    );
-
-    if (isLoading) {
-        return <div>Loading</div>
-    }
-
-    if (isError) {
-        return <div>Error</div>
-    }
-
-    return <div>Data loaded</div>
 }
 
 export default useApi;

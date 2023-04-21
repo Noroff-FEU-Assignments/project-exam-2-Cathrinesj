@@ -1,8 +1,16 @@
 import React, { useEffect, useState} from "react";
 import { API } from "../../constants/API";
+import { Link, useParams } from "react-router-dom";
+import Navigation from "./../../components/Navigation"; 
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const url = API + 'posts'
+
+function PostId() {
+
+    const params = useParams();
+    return <div>Individual Post ID: {params.id} </div>
+}
 
 function Posts() {
     const [posts, setPosts] = useState([]);
@@ -26,17 +34,22 @@ function Posts() {
     }, []);
 
     return (
+        <>
+        <Navigation />
         <div>
             {posts.map((post) => (
-                <div>
-                    <div>{post.media}</div>
-                    <div>{post.author_avatar}</div>
-                    <h2>{post.title}</h2>
-                    <p>{post.body} </p>
-                    <p>{post.tags}</p>
-                </div>
+                <Link to="/post/5">
+                    <div key={post.id}>
+                        <div>{post.media}</div>
+                        <div>{post.author_avatar}</div>
+                        <h2>{post.title}</h2>
+                        <p>{post.body} </p>
+                        <p>{post.tags}</p> 
+                    </div>
+                </Link>  
             ) )}
         </div>
+        </>
     );
 }
 
