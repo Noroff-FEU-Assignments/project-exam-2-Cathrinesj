@@ -1,14 +1,14 @@
 import React from "react";
 import Navigation from "../../components/layout/Navigation";
-import Post from "../../components/Post";
+import Profiles from "../../components/Profiles";
 
-function PostPage() {
+function ProfilesPage() {
     return (
     <> 
     <Navigation/>
-    <Post/>
+    <Profiles/>
     </>
     );
 }
 
-export default PostPage;
+export default ProfilesPage;

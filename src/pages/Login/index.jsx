@@ -1,11 +1,11 @@
 import React from "react";
 import LoginForm from "../../components/forms/LoginForm";
 
-function LogIn() {
-    return <div>
+function LogInPage() {
+    return (
         <LoginForm/>
-    </div>
+        )
 }
 
-export default LogIn;
+export default LogInPage;
 

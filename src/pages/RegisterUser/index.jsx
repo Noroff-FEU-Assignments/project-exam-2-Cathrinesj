@@ -1,11 +1,10 @@
 import React from "react";
 import RegisterForm from "../../components/forms/RegisterForm";
 
-function RegisterUser() {
-    return <div>
+function RegisterPage() {
+    return (
         <RegisterForm/>
-    </div>
+        )
 }
 
-export default RegisterUser;
-
+export default RegisterPage;

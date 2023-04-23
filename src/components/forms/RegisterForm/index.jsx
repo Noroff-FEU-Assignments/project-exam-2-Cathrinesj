@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup'; 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,11 +8,12 @@ import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
 import AuthContext from "../../../context/AuthContext";
 import { Form } from "react-bootstrap";
+import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg"; 
 
 const url = API + 'auth/register'
 
 const schema = yup.object().shape({
-  username: yup.string().min(8).required('Please enter your password'),
+  username: yup.string().required('Please enter a username'),
   email: yup.string().email('Must be a stud.noroff.no or noroff.no mail').required('Please enter your e-mail'), 
   password: yup.string().min(8).required('Please enter your password'),
 });
@@ -42,7 +43,7 @@ function RegisterForm() {
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      navigate('/posts');
+      navigate('/login');
     } catch (error) {
       setLoginError(error.toString());
     } finally {
@@ -51,25 +52,40 @@ function RegisterForm() {
   }
 
   return (
+    <>
+    <div>
+      <ReactLogo/>
+    </div>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Register User</h2>
       {loginError && <FormError>{loginError}</FormError>}
       <fieldset disabled={submitting}>
+      <Form.Group>
+          <Form.Control
+          {...register('username')} placeholder="Username" type="username"/>
+          {errors.username && <FormError>{errors.username.message} </FormError>}
+        </Form.Group>
         <Form.Group>
           <Form.Control {...register('email')} placeholder = "email"/>
           {errors.email && <FormError>{errors.email.message} </FormError>}
         </Form.Group>
-
         <Form.Group>
           <Form.Control
-          {...register('password')}
-          placeholder="Password"
-          type="password"/>
+          {...register('password')} placeholder="Password" type="password"/>
           {errors.password && <FormError>{errors.password.message} </FormError>}
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+          {...register('avatar')} placeholder="Avatar (URL-Link)" type="avatar"/>
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+          {...register('banner')} placeholder="Banner Image (URL-Link)" type="banner"/>
         </Form.Group>
         <button>{submitting ? 'Registering'  : 'Register'} </button>
       </fieldset>
     </form>
+    </>
   )
 }
 

@@ -8,6 +8,7 @@ import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
 import AuthContext from "../../../context/AuthContext";
 import { Form } from "react-bootstrap";
+import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg"; 
 
 const url = API + 'auth/login'
 
@@ -19,9 +20,9 @@ const schema = yup.object().shape({
 function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
-
+  
   const navigate = useNavigate();
-
+  
   const {
     register, 
     handleSubmit,
@@ -30,14 +31,14 @@ function LoginForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
+  
   const [ ,setAuth] = useContext(AuthContext);
-
+  
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
     reset();
-
+    
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
@@ -48,33 +49,33 @@ function LoginForm() {
       setSubmitting(false);
     }
   }
-
+  
   return (
     <>
+    <div>
+      <ReactLogo/>
+    </div>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Login</h2>
       {loginError && <FormError>{loginError}</FormError>}
       <fieldset disabled={submitting}>
-        <Form.Group>
-          <Form.Control {...register('email')} placeholder = "email"/>
-          {errors.email && <FormError>{errors.email.message} </FormError>}
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Control
-          {...register('password')}
-          placeholder="Password"
-          type="password"/>
-          {errors.password && <FormError>{errors.password.message} </FormError>}
-        </Form.Group>
-        <button>{submitting ? 'Logging in'  : 'Log In'} </button>
+      <Form.Group className="mb-3">
+        <Form.Label>E-mail</Form.Label>
+        <Form.Control {...register('email')} placeholder = "email" />
+        {errors.email && <FormError>{errors.email.message} </FormError>}
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Control {...register('password')} placeholder="Password" type="password"/>
+        {errors.password && <FormError>{errors.password.message} </FormError>}
+      </Form.Group>
+      <button>{submitting ? 'Logging in'  : 'Log In'} </button>
       </fieldset>
     </form>
-    <div>
-    <Link to="/registeruser">Register new User</Link>
-    </div>
+      <div>
+        <Link to="/registeruser">Register new User</Link>
+      </div>
     </>
-  )
-}
-
-export default LoginForm;
+    )
+  }
+  
+  export default LoginForm;
