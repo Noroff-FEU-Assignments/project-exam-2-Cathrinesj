@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import { API } from "../../constants/API";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 
 const url = API + 'profiles?_count'
 
@@ -30,17 +30,26 @@ function Profiles() {
     return (
         <div>
             {profiles.map((profile) => (
-                    <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src="{profile.avatar_embed}"/>
-                        <Card.Body>
-                            <Card.Title>{profile.name}</Card.Title>
-                            <Card.Text>Followers:{profile._count.followers}</Card.Text>
-                            <Card.Text>Following:{profile._count.following}</Card.Text>
-                            <Link to="/profile/Ylva" key={profile.id}>
-                            <Button variant="primary">View</Button>
-                            </Link>
-                        </Card.Body>
-                    </Card>
+                    <Card  key={profile.name} className="opacity">
+                        <Row>
+                            <Col xs={4} md={2}>
+                                <Card.Img className="avatarImage" src={profile.avatar}/>  
+                            </Col> 
+                            <Col xs={8} md={6}>
+                                <Card.Body>
+                                    <Card.Title>{profile.name}</Card.Title>
+                                    <Card.Text>Followers:{profile._count.followers}</Card.Text>
+                                    <Card.Text>Following:{profile._count.following}</Card.Text>
+                                    <Card.Text>Posts:{profile._count.posts}</Card.Text>
+                                </Card.Body>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <Link to={`/profile/${profile.name}`}>
+                                    <Button variant="primary">View</Button>
+                                </Link>   
+                            </Col>          
+                        </Row>  
+                    </Card> 
             ) )}
         </div>
     );

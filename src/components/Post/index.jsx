@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import { Stack } from "react-bootstrap";
+import ThumbsUp from '../../icons/ThumbsUp.svg'
+import Comments from '../../icons/Comments.svg'
+import Comment from '../../icons/Comment.svg'
 
 function Post() {
     const [data, setData] = useState(null);
@@ -32,7 +36,7 @@ useEffect(() => {
         }
     }
 
-    getData(`https://api.noroff.dev/api/v1/social/posts/${id}?reactions&&?comments`);
+    getData(`https://api.noroff.dev/api/v1/social/posts/${id}?_author=true&_comments=true`);
 }, [id]);
 
 if (isLoading || !data ) {
@@ -47,22 +51,29 @@ console.log(data);
 
 return (
     <>
-    <Card style={{ width: '18rem' }} className="opacity">
+   <Card className="opacity">    
         <Card.Body>
             <Card.Title>{data.title}</Card.Title>
-            <Card.Img variant="top" src="{data.author_avatar}"/>
-            <Card.Img variant="top" src="{data.media_embed}"/>
+            <Stack direction="horizontal" gap={3}>
+            <Card.Img className="avatarImage" variant="top" src={data.author.avatar}/>
+            <Card.Text>By:{data.author.name} </Card.Text>
+            </Stack>
+            <Card.Img variant="top" src={data.media}/>
             <Card.Text>{data.body}</Card.Text>
         </Card.Body>
     </Card>
-    <Card style={{ width: '18rem' }} className="opacity">
+    <Card className="opacity">
     <Card.Body>
-        <Card.Title>{data._count.reactions} </Card.Title>
-        <Card.Title>{data._count.comments} </Card.Title>
-        <Card.Title>Comment </Card.Title>
+        <Stack direction="horizontal" gap={3}>
+            <img src={ThumbsUp} className="icons"/>
+            <Card.Title>{data._count.reactions} </Card.Title>
+            <img src={Comments} className="icons"/>
+            <Card.Title>{data._count.comments} </Card.Title>
+            <img src={Comment} className="icons"/>
+            <Card.Title>Comment </Card.Title>
+        </Stack>
     </Card.Body>
     </Card>
-   
     </>
 )
 }

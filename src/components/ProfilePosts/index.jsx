@@ -49,9 +49,9 @@ console.log(data);
 return (
     <div>
             {data.map((post) => (
-                <Link to="/post/54" key={post.id}>
+                <Link to={`/post/${post.id}`} key={post.id}>
                     <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src="{post.media_embed}"/>
+                        <Card.Img variant="top" src={post.media}/>
                         <Card.Body>
                             <Card.Title>{post.title}</Card.Title>
                             <Card.Text>{post.body}</Card.Text>

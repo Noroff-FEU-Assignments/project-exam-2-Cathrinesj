@@ -3,6 +3,7 @@ import { API } from "../../constants/API";
 import { Link, useParams } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Card from 'react-bootstrap/Card';
+import { Col, Row, Stack } from "react-bootstrap";
 
 const url = API + 'posts'
 
@@ -30,13 +31,19 @@ function Posts() {
     return (
         <div>
             {posts.map((post) => (
-                <Link to="/post/54" key={post.id}>
-                    <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src="{post.media_embed}"/>
-                        <Card.Body>
-                            <Card.Title>{post.title}</Card.Title>
-                            <Card.Text>{post.body}</Card.Text>
-                        </Card.Body>
+                <Link to={`/post/${post.id}`} key={post.id}>
+                    <Card className="opacity">
+                        <Row>
+                            <Col xs={12} md={4} >
+                                <Card.Img src={post.media}/>
+                            </Col>
+                            <Col xs={6} md={8}>
+                                <Card.Body>
+                                    <Card.Title>{post.title}</Card.Title>
+                                    <Card.Text>{post.body}</Card.Text>
+                                </Card.Body>
+                            </Col>
+                        </Row>
                     </Card>
                 </Link>  
             ) )}

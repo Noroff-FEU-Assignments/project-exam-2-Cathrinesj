@@ -13,7 +13,7 @@ import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg";
 const url = API + 'auth/register'
 
 const schema = yup.object().shape({
-  username: yup.string().required('Please enter a username'),
+  name: yup.string().required('Please enter a username'),
   email: yup.string().email('Must be a stud.noroff.no or noroff.no mail').required('Please enter your e-mail'), 
   password: yup.string().min(8).required('Please enter your password'),
 });
@@ -62,11 +62,11 @@ function RegisterForm() {
       <fieldset disabled={submitting}>
       <Form.Group>
           <Form.Control
-          {...register('username')} placeholder="Username" type="username"/>
-          {errors.username && <FormError>{errors.username.message} </FormError>}
+          {...register('name')} placeholder="Username" type="name"/>
+          {errors.name && <FormError>{errors.name.message} </FormError>}
         </Form.Group>
         <Form.Group>
-          <Form.Control {...register('email')} placeholder = "email"/>
+          <Form.Control {...register('email')} placeholder = "Email (must be stud.noroff or noroff e-mail)"/>
           {errors.email && <FormError>{errors.email.message} </FormError>}
         </Form.Group>
         <Form.Group>

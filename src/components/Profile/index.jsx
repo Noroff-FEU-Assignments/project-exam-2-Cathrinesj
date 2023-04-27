@@ -47,7 +47,7 @@ console.log(data);
 
 return (
     <Card style={{ width: '18rem' }} className="opacity">
-        <Card.Img variant="top" src="{data.banner_embed}"/>
+        <Card.Img variant="top" src={data.banner}/>
         <Card.Body>
             <Card.Title>{data.name}</Card.Title>
             <Card.Title>Followers:{data._count.followers}</Card.Title>
