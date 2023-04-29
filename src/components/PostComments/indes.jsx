@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API } from "../../constants/API";
-import { Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
 
-function ProfilePosts() {
+function PostComments() {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -34,7 +32,7 @@ useEffect(() => {
         }
     }
 
-    getData(API + `profiles/${id}/posts`);
+    getData(`https://api.noroff.dev/api/v1/social/posts/${id}?_comments=true`);
 }, [id]);
 
 if (isLoading || !data ) {
@@ -49,19 +47,15 @@ console.log(data);
 
 return (
     <div>
-            {data.map((post) => (
-                <Link to={`/post/${post.id}`} key={post.id}>
-                    <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src={post.media}/>
-                        <Card.Body>
-                            <Card.Title>{post.title}</Card.Title>
-                            <Card.Text>{post.body}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Link>  
-            ) )}
-        </div>
-)
+        {data.comments.map((comment) => (
+                <Card className="opacity">    
+                <Card.Body>
+                    <Card.Text>{comment.body}</Card.Text>                 
+                </Card.Body>
+            </Card>  
+        ) )}
+    </div>
+);
 }
 
-export default ProfilePosts;
+export default PostComments;

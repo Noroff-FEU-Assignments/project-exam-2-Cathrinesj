@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../../constants/API";
-import { Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
+import { Stack } from "react-bootstrap";
+import ThumbsUp from '../../icons/ThumbsUp.svg'
+import Comments from '../../icons/Comments.svg'
+import Comment from '../../icons/Comment.svg'
 
-function ProfilePosts() {
+function PostReactions() {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -34,7 +37,7 @@ useEffect(() => {
         }
     }
 
-    getData(API + `profiles/${id}/posts`);
+    getData(API + `posts?_reactions=true/${id}`);
 }, [id]);
 
 if (isLoading || !data ) {
@@ -48,20 +51,21 @@ if (isError) {
 console.log(data);
 
 return (
-    <div>
-            {data.map((post) => (
-                <Link to={`/post/${post.id}`} key={post.id}>
-                    <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src={post.media}/>
-                        <Card.Body>
-                            <Card.Title>{post.title}</Card.Title>
-                            <Card.Text>{post.body}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Link>  
-            ) )}
-        </div>
+    <>
+    <Card className="opacity">
+    <Card.Body>
+        <Stack direction="horizontal" gap={3}>
+            <img src={ThumbsUp} className="icons"/>
+            <Card.Title>{data._count.reactions} </Card.Title>
+            <img src={Comments} className="icons"/>
+            <Card.Title>{data._count.comments} </Card.Title>
+            <img src={Comment} className="icons"/>
+            <Card.Title>Comment </Card.Title>
+        </Stack>
+    </Card.Body>
+    </Card>
+    </>
 )
 }
 
-export default ProfilePosts;
+export default PostReactions;

@@ -30,18 +30,18 @@ function Profiles() {
     return (
         <div>
             {profiles.map((profile) => (
-                    <Card  key={profile.name} className="opacity">
+                <Card  key={profile.name} className="opacity">
+                    <Card.Body>
                         <Row>
                             <Col xs={4} md={2}>
                                 <Card.Img className="avatarImage" src={profile.avatar}/>  
                             </Col> 
                             <Col xs={8} md={6}>
-                                <Card.Body>
+                                
                                     <Card.Title>{profile.name}</Card.Title>
                                     <Card.Text>Followers:{profile._count.followers}</Card.Text>
                                     <Card.Text>Following:{profile._count.following}</Card.Text>
                                     <Card.Text>Posts:{profile._count.posts}</Card.Text>
-                                </Card.Body>
                             </Col>
                             <Col xs={6} md={4}>
                                 <Link to={`/profile/${profile.name}`}>
@@ -49,7 +49,8 @@ function Profiles() {
                                 </Link>   
                             </Col>          
                         </Row>  
-                    </Card> 
+                    </Card.Body>
+                </Card> 
             ) )}
         </div>
     );

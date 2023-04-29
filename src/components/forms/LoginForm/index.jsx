@@ -7,7 +7,7 @@ import axios from 'axios';
 import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
 import AuthContext from "../../../context/AuthContext";
-import { Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg"; 
 
 const url = API + 'auth/login'
@@ -32,7 +32,7 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
   
-  const [ ,setAuth] = useContext(AuthContext);
+  const [ auth ,setAuth] = useContext(AuthContext);
   
   async function onSubmit(data) {
     setSubmitting(true);
@@ -52,29 +52,32 @@ function LoginForm() {
   
   return (
     <>
-    <div>
-      <ReactLogo/>
-    </div>
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Login</h2>
-      {loginError && <FormError>{loginError}</FormError>}
-      <fieldset disabled={submitting}>
-      <Form.Group className="mb-3">
-        <Form.Label>E-mail</Form.Label>
-        <Form.Control {...register('email')} placeholder = "email" />
-        {errors.email && <FormError>{errors.email.message} </FormError>}
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Control {...register('password')} placeholder="Password" type="password"/>
-        {errors.password && <FormError>{errors.password.message} </FormError>}
-      </Form.Group>
-      <button>{submitting ? 'Logging in'  : 'Log In'} </button>
-      </fieldset>
-    </form>
+    <Container className="opacity">
+      <div>
+        <ReactLogo/>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Login</h2>
+        {loginError && <FormError>{loginError}</FormError>}
+        <fieldset disabled={submitting}>
+          <Form.Group className="mb-3">
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control {...register('email')} placeholder = "email" />
+            {errors.email && <FormError>{errors.email.message} </FormError>}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control {...register('password')} placeholder="Password" type="password"/>
+            {errors.password && <FormError>{errors.password.message} </FormError>}
+          </Form.Group>
+          <button>{submitting ? 'Logging in'  : 'Log In'} </button>
+        </fieldset>
+      </form>
       <div>
         <Link to="/registeruser">Register new User</Link>
       </div>
+    </Container>
     </>
+    
     )
   }
   
