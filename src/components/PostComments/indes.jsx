@@ -48,7 +48,7 @@ console.log(data);
 return (
     <div>
         {data.comments.map((comment) => (
-                <Card className="opacity">    
+                <Card className="opacity" key={comment.id}>    
                 <Card.Body>
                     <Card.Text>{comment.body}</Card.Text>                 
                 </Card.Body>

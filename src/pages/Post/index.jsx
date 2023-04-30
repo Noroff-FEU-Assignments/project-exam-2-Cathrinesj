@@ -9,8 +9,8 @@ function PostPage() {
     <> 
     <Navigation/>
     <Post/>
-    <CommentForm/>
     <h2 className="opacity">Comments</h2>
+    <CommentForm/>
     <PostComments/>
     </>
     );

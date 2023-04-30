@@ -1,53 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useApi from "../../hooks/useApi";
-import { API } from "../../constants/API";
 import Card from 'react-bootstrap/Card';
-import { Row, Col } from "react-bootstrap";
-
+import { Stack } from "react-bootstrap";
+import ThumbsUp from '../../icons/ThumbsUp.svg'
+import Comments from '../../icons/Comments.svg'
+import Comment from '../../icons/Comment.svg'
 
 function Post() {
-
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
     let { id } = useParams();
-    const { data, isLoading, isError} = useApi(
-        API + `posts/${id}?_author=true`,
-        );
 
-    if (isLoading || !data ) {
-        return <div>Loading</div>;
-    } 
-
-    if (isError) {
-        return <div>Error</div>;
+    const options = {
+        headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQxMiwibmFtZSI6IkNhdGhyaW5lU0oiLCJlbWFpbCI6IkNhdEp1djQ2MzE1QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY4MTQxMDYxMn0.byp-C0Ha4rqxGlJm-c_WFZucnWQ8hpM4GDfti1Pg2G0",
+        },
     }
 
-    console.log(data);
 
-    return (
+useEffect(() => {
+    async function getData(url) {
+        try {
+            setIsLoading(true);
+            setIsError(false);
+
+            const response = await fetch(url, options);
+            const json = await response.json();
+
+            setData(json);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    getData(`https://api.noroff.dev/api/v1/social/posts/${id}?_author=true&_comments=true`);
+}, [id]);
+
+if (isLoading || !data ) {
+    return <div>Loading</div>;
+}
+
+if (isError) {
+    return <div>Error</div>;
+}
+
+console.log(data);
+
+return (
     <>
-        <Card className="opacity">    
-            <Card.Body>
-                <Row>
-                    <Col xs={12}>
-                        <Card.Title><h1>{data.title}</h1></Card.Title>
-                        <Card.Img className="avatarImage" src={data.author.avatar}/>
-                        <Card.Text>By: {data.author.name}</Card.Text>
-                    </Col>
-                    <Col xs={12}>
-                        <Card.Img src={data.media}/>
-                    </Col>    
-                    <Col xs={12}>
-                        <Card.Text>{data.body}</Card.Text>
-                    </Col>
-                </Row>
-            </Card.Body>
-        </Card>
+   <Card className="opacity">    
+        <Card.Body>
+            <Card.Title>{data.title}</Card.Title>
+            <Card.Img className="avatarImage" src={data.author.avatar}/>
+            <Card.Text>By: {data.author.name}</Card.Text>
+            <Card.Img variant="top" src={data.media}/>
+            <Card.Text>{data.body}</Card.Text>
+        </Card.Body>
+    </Card>
     </>
-    )
+)
 }
 
 export default Post;
-
-
-                           
-                            

@@ -1,9 +1,10 @@
 import React, { useEffect, useState} from "react";
+import { useContext } from "react"; 
+import AuthContext from "../../context/AuthContext";
 import { API } from "../../constants/API";
-import { Link, useParams } from "react-router-dom";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import { Col, Row, Stack } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import ThumbsUp from '../../icons/ThumbsUp.svg'
 import Comments from '../../icons/Comments.svg'
 import Comment from '../../icons/Comment.svg'
@@ -12,6 +13,7 @@ const url = API + 'posts?_author=true'
 
 function Posts() {
     const [posts, setPosts] = useState([]);
+    const accessToken = useContext(AuthContext);
 
     const options = {
         headers: {

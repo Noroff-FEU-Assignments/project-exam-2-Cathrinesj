@@ -10,7 +10,7 @@ import AuthContext from "../../../context/AuthContext";
 import { Container, Form } from "react-bootstrap";
 import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg"; 
 
-const url = API + 'auth/login'
+const url = API + 'auth/login';
 
 const schema = yup.object().shape({
   email: yup.string().email('Must be a stud.noroff.no or noroff.no mail').required('Please enter your e-mail'), 
@@ -32,7 +32,7 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
   
-  const [ auth ,setAuth] = useContext(AuthContext);
+  const [,setAuth] = useContext(AuthContext);
   
   async function onSubmit(data) {
     setSubmitting(true);
@@ -42,13 +42,17 @@ function LoginForm() {
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      navigate('/posts');
+      navigate('/');
+      console.log(response);
     } catch (error) {
       setLoginError(error.toString());
     } finally {
       setSubmitting(false);
     }
+
   }
+
+  
   
   return (
     <>

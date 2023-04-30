@@ -14,10 +14,10 @@ function Navigation() {
   return (
       <Navbar expand="lg opacity">
         <Container>
-          <Navbar.Brand href="/posts">Some</Navbar.Brand>
+          <Navbar.Brand href="/">Some</Navbar.Brand>
             <Nav className="me-auto d-none d-lg-block sticky-top opacity-75">
               <Link to="/profiles"><img src={People} className="icons"/></Link>
-              <Link to="/posts"><img src={Posts} className="icons"/></Link>
+              <Link to="/"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
               <Link to="/userProfile"><img src={Profile} className="icons"/></Link>     
             </Nav>
@@ -32,7 +32,7 @@ function Navigation() {
             <Link to="/login"><img src={Logout} className="icons"/></Link>
             <Nav className="me-auto fixed-bottom d-lg-none d-block justify-content-center opacity">
               <Link to="/profiles"><img src={People} className="icons"/></Link>
-              <Link to="/posts"><img src={Posts} className="icons"/></Link>
+              <Link to="/"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
               <Link to="/search"><img src={Search} className="icons"/></Link>
               <Link to="/userProfile"><img src={Profile} className="icons"/></Link>
