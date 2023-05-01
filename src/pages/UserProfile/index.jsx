@@ -3,7 +3,7 @@ import Navigation from "../../components/layout/Navigation";
 import Profile from "../../components/Profile";
 import ProfilePosts from "../../components/ProfilePosts";
 
-function UserProfilePage() {
+function ProfilePage() {
     return (
     <> 
     <Navigation/>
@@ -13,4 +13,4 @@ function UserProfilePage() {
     );
 }
 
-export default UserProfilePage;
+export default ProfilePage;

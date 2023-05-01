@@ -1,6 +1,5 @@
-import React, { useEffect, useState} from "react";
-import { useContext } from "react"; 
-import AuthContext from "../../context/AuthContext";
+import React from "react";
+import useApi from "../../hooks/fetchApi";
 import { API } from "../../constants/API";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
@@ -9,33 +8,24 @@ import ThumbsUp from '../../icons/ThumbsUp.svg'
 import Comments from '../../icons/Comments.svg'
 import Comment from '../../icons/Comment.svg'
 
-const url = API + 'posts?_author=true'
+
 
 function Posts() {
-    const [posts, setPosts] = useState([]);
-    const accessToken = useContext(AuthContext);
+    const { data, isLoading, isError } = useApi(
+        API + 'posts?_author=true'
+    );
 
-    const options = {
-        headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQxMiwibmFtZSI6IkNhdGhyaW5lU0oiLCJlbWFpbCI6IkNhdEp1djQ2MzE1QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY4MTQxMDYxMn0.byp-C0Ha4rqxGlJm-c_WFZucnWQ8hpM4GDfti1Pg2G0",
-        },
+    if(isLoading) {
+        return <div>Loading</div>
     }
 
-    useEffect(() => {
-        async function getData() {
-            const response = await fetch(url, options);
-            const json = await response.json();
-
-            console.log(json);
-            
-            setPosts(json);
-        }
-        getData();
-    }, []);
+    if (isError) {
+        return <div>Error</div>
+    }
 
     return (
         <div>
-            {posts.map((post) => (
+            {data.map((post) => (
                 <Link to={`/post/${post.id}`} key={post.id}>
                     <Card className="opacity">
                         <Row>

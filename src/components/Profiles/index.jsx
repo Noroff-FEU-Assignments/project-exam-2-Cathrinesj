@@ -1,35 +1,28 @@
-import React, { useEffect, useState} from "react";
+import React from "react";
+import useApi from "../../hooks/fetchApi";
 import { API } from "../../constants/API";
 import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import { Button, Row, Col } from "react-bootstrap";
 
-const url = API + 'profiles?_count'
-
 function Profiles() {
-    const [profiles, setPosts] = useState([]);
+    const { data, isLoading, isError } = useApi(
+        API + 'profiles?_count'
+    );
 
-    const options = {
-        headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQxMiwibmFtZSI6IkNhdGhyaW5lU0oiLCJlbWFpbCI6IkNhdEp1djQ2MzE1QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY4MTQxMDYxMn0.byp-C0Ha4rqxGlJm-c_WFZucnWQ8hpM4GDfti1Pg2G0",
-        },
+    if(isLoading) {
+        return <div>Loading</div>
     }
 
-    useEffect(() => {
-        async function getData() {
-            const response = await fetch(url, options);
-            const json = await response.json();
+    if (isError) {
+        return <div>Error</div>
+    }
 
-            console.log(json);
-            
-            setPosts(json);
-        }
-        getData();
-    }, []);
+    console.log(data);
 
     return (
         <div>
-            {profiles.map((profile) => (
+            {data.map((profile) => (
                 <Card  key={profile.name} className="opacity">
                     <Card.Body>
                         <Row>

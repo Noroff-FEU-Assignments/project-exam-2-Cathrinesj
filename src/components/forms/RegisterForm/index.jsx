@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup'; 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -53,9 +53,9 @@ function RegisterForm() {
 
   return (
     <>
-    <div>
+    <Link to="/login">
       <ReactLogo/>
-    </div>
+    </Link>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Register User</h2>
       {loginError && <FormError>{loginError}</FormError>}
