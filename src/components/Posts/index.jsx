@@ -8,8 +8,6 @@ import ThumbsUp from '../../icons/ThumbsUp.svg'
 import Comments from '../../icons/Comments.svg'
 import Comment from '../../icons/Comment.svg'
 
-
-
 function Posts() {
     const { data, isLoading, isError } = useApi(
         API + 'posts?_author=true'

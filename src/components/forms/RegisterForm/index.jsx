@@ -43,7 +43,7 @@ function RegisterForm() {
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       setLoginError(error.toString());
     } finally {

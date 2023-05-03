@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-
-
 function useApi (url) {
     const [auth] = useContext(AuthContext);
     const accessToken = auth.accessToken;

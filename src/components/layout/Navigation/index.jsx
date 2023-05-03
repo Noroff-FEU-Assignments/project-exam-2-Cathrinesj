@@ -32,7 +32,7 @@ const logout = () => {
           <Navbar.Brand href="/">Some</Navbar.Brand>
             <Nav className="me-auto d-none d-lg-block sticky-top opacity-75">
               <Link to="/profiles"><img src={People} className="icons"/></Link>
-              <Link to="/"><img src={Posts} className="icons"/></Link>
+              <Link to="/posts"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
               <Link to={`/userprofile/${user}`}><img src={Profile} className="icons"/></Link>     
             </Nav>
@@ -47,7 +47,7 @@ const logout = () => {
             <div onClick={logout}><img src={Logout} className="icons"/></div>
             <Nav className="me-auto fixed-bottom d-lg-none d-block justify-content-center opacity">
               <Link to="/profiles"><img src={People} className="icons"/></Link>
-              <Link to="/"><img src={Posts} className="icons"/></Link>
+              <Link to="/posts"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
               <Link to="/search"><img src={Search} className="icons"/></Link>
               <Link to={`/userprofile/${user}`}><img src={Profile} className="icons"/></Link>
