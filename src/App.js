@@ -7,14 +7,11 @@ import HomePage from "./pages/Home";
 import PostPage from "./pages/Post";
 import ProfilesPage from "./pages/Profiles";
 import ProfilePage from "./pages/Profile";
-import UserPostPage from "./pages/UserPost";
-import UserProfilePage from "./pages/UserProfile";
 import NewPostPage from "./pages/NewPost";
 import UpdatePage from "./pages/UpdatePost";
 import SearchPage from "./pages/Search";
 
 function App() {
-  /*
   const navigate = useNavigate;
 
   const user =
@@ -23,7 +20,6 @@ function App() {
       : localStorage.clear();
 
   if (!user) navigate("/login");
-  */
 
   return (
     <div>
@@ -34,8 +30,6 @@ function App() {
         <Route path="post/:id" Component={PostPage} />
         <Route path="profiles" Component={ProfilesPage} />
         <Route path="profile/:id" Component={ProfilePage} />
-        <Route path="userpost/:id" Component={UserPostPage} />
-        <Route path="userprofile/:id" Component={UserProfilePage} />
         <Route path="newpost" Component={NewPostPage} />
         <Route path="updatepost" Component={UpdatePage} />
         <Route path="search" Component={SearchPage} />

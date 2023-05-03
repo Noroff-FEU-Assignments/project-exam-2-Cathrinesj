@@ -12,7 +12,6 @@ import Search from '../../../icons/Search.svg';
 import Profile from '../../../icons/Profile.svg';
 import Logout from '../../../icons/Logout.svg';
 
-
 function Navigation() {
 
 const navigate = useNavigate();
@@ -21,10 +20,8 @@ const user = auth.name;
   
 const logout = () => {
   localStorage.clear();
-  navigate('/login')
+  navigate('/')
 }  
-
-
 
   return (
       <Navbar expand="lg opacity">
@@ -34,7 +31,7 @@ const logout = () => {
               <Link to="/profiles"><img src={People} className="icons"/></Link>
               <Link to="/posts"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
-              <Link to={`/userprofile/${user}`}><img src={Profile} className="icons"/></Link>     
+              <Link to={`/profile/${user}`}><img src={Profile} className="icons"/></Link>     
             </Nav>
             <Form className="d-flex d-none d-lg-block">
               <Form.Control
@@ -50,7 +47,7 @@ const logout = () => {
               <Link to="/posts"><img src={Posts} className="icons"/></Link>
               <Link to="/newPost"><img src={Add} className="icons"/></Link>
               <Link to="/search"><img src={Search} className="icons"/></Link>
-              <Link to={`/userprofile/${user}`}><img src={Profile} className="icons"/></Link>
+              <Link to={`/profile/${user}`}><img src={Profile} className="icons"/></Link>
             </Nav>
         </Container>
       </Navbar>

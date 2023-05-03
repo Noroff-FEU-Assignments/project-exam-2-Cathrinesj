@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import AuthContext from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup'; 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,14 +18,16 @@ const schema = yup.object().shape({
 });
 
 function PostForm() {
+  const [auth] = useContext(AuthContext);
+  const accessToken = auth.accessToken;
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
   const options = {
     headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQxMiwibmFtZSI6IkNhdGhyaW5lU0oiLCJlbWFpbCI6IkNhdEp1djQ2MzE1QHN0dWQubm9yb2ZmLm5vIiwiYXZhdGFyIjpudWxsLCJiYW5uZXIiOm51bGwsImlhdCI6MTY4MTQxMDYxMn0.byp-C0Ha4rqxGlJm-c_WFZucnWQ8hpM4GDfti1Pg2G0",
+        Authorization: `Bearer ${accessToken}`,
     },
-}
+  }
   
   const navigate = useNavigate();
   
@@ -44,7 +47,7 @@ function PostForm() {
     
     try {
       const response = await axios.post(url, data, options);
-      navigate('/posts');
+      navigate(-1);
     } catch (error) {
       setLoginError(error.toString());
     } finally {
@@ -65,14 +68,14 @@ function PostForm() {
             {errors.title && <FormError>{errors.title.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Control {...register('body')} placeholder = "Comment" />
+            <Form.Control {...register('body')} placeholder = "Text" />
             {errors.body && <FormError>{errors.body.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Control {...register('media')} placeholder = "Imaeg (URL - link)" />
+            <Form.Control {...register('media')} placeholder = "Image (URL - link)" />
             {errors.media && <FormError>{errors.media.message} </FormError>}
           </Form.Group>
-          <button>{submitting ? 'Commenting'  : 'Comment'} </button>
+          <button>{submitting ? 'Posting'  : 'Post'} </button>
         </fieldset>
       </form>
     </Container>
