@@ -27,21 +27,19 @@ function App() {
 
   return (
     <div>
-      <AuthProvider>
-        <Routes>
-          <Route path="login" Component={LogInPage} />
-          <Route path="registeruser" Component={RegisterPage} />
-          <Route path="/*" Component={HomePage} />
-          <Route path="post/:id" Component={PostPage} />
-          <Route path="profiles" Component={ProfilesPage} />
-          <Route path="profile/:id" Component={ProfilePage} />
-          <Route path="userpost/:id" Component={UserPostPage} />
-          <Route path="userprofile/:id" Component={UserProfilePage} />
-          <Route path="newpost" Component={NewPostPage} />
-          <Route path="updatepost" Component={UpdatePage} />
-          <Route path="search" Component={SearchPage} />
-        </Routes>
-      </AuthProvider>
+      <Routes>
+        <Route path="login" Component={LogInPage} />
+        <Route path="registeruser" Component={RegisterPage} />
+        <Route path="/*" Component={HomePage} />
+        <Route path="post/:id" Component={PostPage} />
+        <Route path="profiles" Component={ProfilesPage} />
+        <Route path="profile/:id" Component={ProfilePage} />
+        <Route path="userpost/:id" Component={UserPostPage} />
+        <Route path="userprofile/:id" Component={UserProfilePage} />
+        <Route path="newpost" Component={NewPostPage} />
+        <Route path="updatepost" Component={UpdatePage} />
+        <Route path="search" Component={SearchPage} />
+      </Routes>
     </div>
   );
 }
