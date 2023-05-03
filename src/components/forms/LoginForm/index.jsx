@@ -42,7 +42,7 @@ function LoginForm() {
     try {
       const response = await axios.post(url, data);
       setAuth(response.data);
-      navigate('/');
+      navigate('/*');
       console.log(response);
     } catch (error) {
       setLoginError(error.toString());
