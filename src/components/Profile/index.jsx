@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import EditProfileForm from "../forms/EditProfile";
-import ModalProfile from "../modals/ModalProfile";
+
+import FollowProfile from "../buttons/FollowProfile";
+import UnfollowProfile from "../buttons/UnfollowProfile";
+import ModalEditProfile from "../modals/ModalEditProfile";
+
 
 function Profile() {
     const [data, setData] = useState(null);
@@ -54,7 +57,9 @@ return (
             <Card.Title>{data.name}</Card.Title>
             <Card.Title>Followers:{data._count.followers}</Card.Title>
             <Card.Title>Following:{data._count.following}</Card.Title>
-            <ModalProfile/>
+            <ModalEditProfile/>
+            <FollowProfile/>
+            <UnfollowProfile/>
         </Card.Body>
     </Card>
 )

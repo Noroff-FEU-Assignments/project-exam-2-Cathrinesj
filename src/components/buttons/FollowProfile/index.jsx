@@ -1,18 +1,19 @@
 import axios from "axios";
-import React, { useContext} from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
+import { useNavigate, useParams } from "react-router-dom";
 import { API } from "../../../constants/API";
 
 
-function DeletePost() {
+
+function FollowProfile() {
 const [auth] = useContext(AuthContext);
 const accessToken = auth.accessToken;
 let { id } = useParams();
-const url = API + `posts/${id}`;
+const url = API + `profiles/${id}/follow`;
 const navigate = useNavigate();
 
-const deletePost = () => {
+const followProfile = () => {
     const options = {
         headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -21,18 +22,20 @@ const deletePost = () => {
     
 
     axios
-    .delete(url, options)
+    .put(url, options)
     .then(response => {
-        console.log("deleted successfully!", response);
+        console.log("followed successfully!", response);
         navigate(-1);
     })
     .catch(error => {
         console.log("something went wrong", error)
     })
+
+    console.log(options)
 }
 return (
-    <button onClick={deletePost}>Delete</button>
+    <button onClick={followProfile}>Follow</button>
 )
 }
 
-export default DeletePost;
+export default FollowProfile;

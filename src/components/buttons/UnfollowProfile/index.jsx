@@ -5,14 +5,14 @@ import AuthContext from "../../../context/AuthContext";
 import { API } from "../../../constants/API";
 
 
-function DeletePost() {
+function UnfollowProfile() {
 const [auth] = useContext(AuthContext);
 const accessToken = auth.accessToken;
 let { id } = useParams();
-const url = API + `posts/${id}`;
+const url = API + `profiles/${id}/unfollow`;
 const navigate = useNavigate();
 
-const deletePost = () => {
+const unfollowProfile = () => {
     const options = {
         headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -21,9 +21,9 @@ const deletePost = () => {
     
 
     axios
-    .delete(url, options)
+    .put(url, options)
     .then(response => {
-        console.log("deleted successfully!", response);
+        console.log("unfollowed successfully!", response);
         navigate(-1);
     })
     .catch(error => {
@@ -31,8 +31,8 @@ const deletePost = () => {
     })
 }
 return (
-    <button onClick={deletePost}>Delete</button>
+    <button onClick={unfollowProfile}>Unfollow</button>
 )
 }
 
-export default DeletePost;
+export default UnfollowProfile;

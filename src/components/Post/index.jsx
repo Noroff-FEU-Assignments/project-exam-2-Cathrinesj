@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import ModalPost from "../modals/ModalPost";
+import ModalEditPost from "../modals/ModalEditPost";
+import LikeIcon from "../icons/LikeIcon";
+
+
 
 
 function Post() {
@@ -56,11 +59,12 @@ return (
    <Card className="opacity">    
         <Card.Body>
             <Card.Title>{data.title}</Card.Title>
-            <ModalPost/>
+            <ModalEditPost/>
             <Card.Img className="avatarImage" src={data.author.avatar}/>
             <Card.Text>By: {data.author.name}</Card.Text>
             <Card.Img variant="top" src={data.media}/>
             <Card.Text>{data.body}</Card.Text>
+            <LikeIcon/>
         </Card.Body>
     </Card>
     </>

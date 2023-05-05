@@ -3,16 +3,19 @@ import React, { useContext} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 import { API } from "../../../constants/API";
+import ThumbsUp from "../../../icons/ThumbsUp.svg"
 
 
-function DeletePost() {
+function LikeIcon() {
 const [auth] = useContext(AuthContext);
 const accessToken = auth.accessToken;
 let { id } = useParams();
-const url = API + `posts/${id}`;
+const like = ThumbsUp;
+const url = API + `posts/${id}/react/👍`;
 const navigate = useNavigate();
 
-const deletePost = () => {
+
+const likeIcon = () => {
     const options = {
         headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -21,9 +24,9 @@ const deletePost = () => {
     
 
     axios
-    .delete(url, options)
+    .put(url, options)
     .then(response => {
-        console.log("deleted successfully!", response);
+        console.log("Liked it!", response);
         navigate(-1);
     })
     .catch(error => {
@@ -31,8 +34,8 @@ const deletePost = () => {
     })
 }
 return (
-    <button onClick={deletePost}>Delete</button>
+    <img src={ThumbsUp} className="icons" onClick={likeIcon}/>
 )
 }
 
-export default DeletePost;
+export default LikeIcon;

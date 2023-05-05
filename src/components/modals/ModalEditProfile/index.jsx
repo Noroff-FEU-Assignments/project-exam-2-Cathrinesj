@@ -1,8 +1,8 @@
 import { Button, Modal } from "react-bootstrap";
-import UpdatePostForm from "../../forms/UpdatePostForm";
+import EditProfileForm from "../../forms/EditProfile";
 import { useState } from "react";
 
-function ModalPost() {
+function ModalEditProfile() {
     const values = [true];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -24,10 +24,10 @@ function ModalPost() {
             <Modal.Header closeButton>
             <Modal.Title>Edit Profile</Modal.Title>
             </Modal.Header>
-            <Modal.Body><UpdatePostForm/></Modal.Body>
+            <Modal.Body><EditProfileForm/></Modal.Body>
             </Modal>
             </>
     )
 }
 
-export default ModalPost;
+export default ModalEditProfile;
