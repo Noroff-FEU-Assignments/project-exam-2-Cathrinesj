@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import { Stack } from "react-bootstrap";
-import ThumbsUp from '../../icons/ThumbsUp.svg'
-import Comments from '../../icons/Comments.svg'
-import Comment from '../../icons/Comment.svg'
+import ModalPost from "../modals/ModalPost";
+
 
 function Post() {
     const [auth] = useContext(AuthContext);
@@ -14,6 +12,7 @@ function Post() {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     let { id } = useParams();
+  
 
     const options = {
         headers: {
@@ -57,6 +56,7 @@ return (
    <Card className="opacity">    
         <Card.Body>
             <Card.Title>{data.title}</Card.Title>
+            <ModalPost/>
             <Card.Img className="avatarImage" src={data.author.avatar}/>
             <Card.Text>By: {data.author.name}</Card.Text>
             <Card.Img variant="top" src={data.media}/>

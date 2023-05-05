@@ -8,20 +8,18 @@ import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
 import { Container, Form } from "react-bootstrap";
 import AuthContext from "../../../context/AuthContext";
-import DeletePost from "../../buttons/DeletePost";
 
 const schema = yup.object().shape({
-  title: yup.string(),
-  body: yup.string(),
-  media: yup.string(),
+  banner: yup.string(),
+  avatar: yup.string(),
 });
 
 
-function UpdatePostForm() {
+function EditProfileForm() {
   const [auth] = useContext(AuthContext);
   const accessToken = auth.accessToken;
   let { id } = useParams();
-  const url = API + `posts/${id}`;
+  const url = API + `profiles/${id}/media`;
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
@@ -65,27 +63,22 @@ function UpdatePostForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         {loginError && <FormError>{loginError}</FormError>}
         <fieldset disabled={submitting}>
-          <h1>Update post</h1>
+          <h1>Update profile</h1>
           <Form.Group className="mb-3">
-            <Form.Control {...register('title')} placeholder = "Title" />
-            {errors.title && <FormError>{errors.title.message} </FormError>}
+            <Form.Control {...register('banner')} placeholder = "Banner (URL-link)" />
+            {errors.banner && <FormError>{errors.banner.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Control {...register('body')} placeholder = "Text" />
-            {errors.body && <FormError>{errors.body.message} </FormError>}
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control {...register('media')} placeholder = "Image (URL - link)" />
-            {errors.media && <FormError>{errors.media.message} </FormError>}
+            <Form.Control {...register('avatar')} placeholder = "Avatar (URL-link)" />
+            {errors.avatar && <FormError>{errors.avatar.message} </FormError>}
           </Form.Group>
           <button>{submitting ? 'Updating'  : 'Update'} </button>
          </fieldset>
       </form>
     </Container>
-    <DeletePost/>
     </>
     
     )
   }
   
-  export default UpdatePostForm;
+  export default EditProfileForm;

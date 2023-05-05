@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useContext} from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 import { API } from "../../../constants/API";
 
 
 function DeletePost() {
 const [auth] = useContext(AuthContext);
-const accessToken = auth.name;
-const { id } = useParams;
-    
+const accessToken = auth.accessToken;
+let { id } = useParams();
+const url = API + `posts/${id}`;
+const navigate = useNavigate();
 
 const deletePost = () => {
     const options = {
@@ -20,9 +21,10 @@ const deletePost = () => {
     
 
     axios
-    .delete(API + `posts/${id}`, {options})
+    .delete(url, options)
     .then(response => {
-        console.log("deleted successfully!", response)
+        console.log("deleted successfully!", response);
+        navigate(-1);
     })
     .catch(error => {
         console.log("something wnet wrong", error)

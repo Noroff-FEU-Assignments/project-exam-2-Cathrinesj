@@ -26,7 +26,7 @@ const logout = () => {
   return (
       <Navbar expand="lg opacity">
         <Container>
-          <Navbar.Brand href="/">Some</Navbar.Brand>
+          <Navbar.Brand href="/posts">Some</Navbar.Brand>
             <Nav className="me-auto d-none d-lg-block sticky-top opacity-75">
               <Link to="/profiles"><img src={People} className="icons"/></Link>
               <Link to="/posts"><img src={Posts} className="icons"/></Link>
