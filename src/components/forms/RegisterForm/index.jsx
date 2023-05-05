@@ -53,7 +53,7 @@ function RegisterForm() {
 
   return (
     <>
-    <Link to="/">
+    <Link to="/*">
       <ReactLogo/>
     </Link>
     <form onSubmit={handleSubmit(onSubmit)}>

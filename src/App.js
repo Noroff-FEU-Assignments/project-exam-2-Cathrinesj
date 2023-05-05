@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" Component={LogInPage} />
+        <Route path="/*" Component={LogInPage} />
         <Route path="registeruser" Component={RegisterPage} />
         <Route path="/posts" Component={HomePage} />
         <Route path="post/:id" Component={PostPage} />
