@@ -24,10 +24,10 @@ const likeIcon = () => {
     
 
     axios
-    .put(url, options)
+    .put(url, {}, options)
     .then(response => {
         console.log("Liked it!", response);
-        navigate(-1);
+        navigate(0);
     })
     .catch(error => {
         console.log("something went wrong", error)

@@ -21,10 +21,10 @@ const unfollowProfile = () => {
     
 
     axios
-    .put(url, options)
+    .put(url, {}, options)
     .then(response => {
         console.log("unfollowed successfully!", response);
-        navigate(-1);
+        navigate(0);
     })
     .catch(error => {
         console.log("something went wrong", error)

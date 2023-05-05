@@ -22,10 +22,10 @@ const followProfile = () => {
     
 
     axios
-    .put(url, options)
+    .put(url, {} ,options)
     .then(response => {
         console.log("followed successfully!", response);
-        navigate(-1);
+        navigate(0);
     })
     .catch(error => {
         console.log("something went wrong", error)

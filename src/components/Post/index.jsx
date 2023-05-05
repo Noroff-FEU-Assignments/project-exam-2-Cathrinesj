@@ -52,8 +52,6 @@ if (isError) {
     return <div>Error</div>;
 }
 
-console.log(data);
-
 return (
     <>
    <Card className="opacity">    
