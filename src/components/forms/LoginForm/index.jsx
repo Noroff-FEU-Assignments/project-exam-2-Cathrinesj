@@ -43,7 +43,6 @@ function LoginForm() {
       const response = await axios.post(url, data);
       setAuth(response.data);
       navigate('/posts');
-      console.log(response);
     } catch (error) {
       setLoginError(error.toString());
     } finally {

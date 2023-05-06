@@ -6,7 +6,9 @@ Main target group are Gen Z. SoMe is a microblog, aiming to be a positive contri
 out there.
 
 Site is also live at: https://someprojectexam2.netlify.app/
+
 Design Protype Phone: https://xd.adobe.com/view/d2413425-56e3-4995-9ed1-e2dbf5595128-8712/?fbclid=IwAR3HpY5vwnTHt_RkqEmBAJlFwpgP7P_SIJU90e4IP_tF4DoK3JACrJoWfZU&fullscreen&hints=off
+
 Design Prototype Computer: https://xd.adobe.com/view/43951544-d5a2-47fa-8be2-56ac0d2168b8-16c6/?fbclid=IwAR0K26Fq9dRUEFwzbkowN6aiLdvoobok_OWBAAwRCuEL7xZSzUjH1L6TiWo&fullscreen&hints=off
 
 ## Set up and run locally
@@ -28,6 +30,7 @@ Once installed, you can follow these steps:
    ### `$ npm start`
 
 Test login user:
+
 E-mail: CathrineTester@stud.noroff.no    
 Password: CathrineTester    
 
@@ -48,7 +51,7 @@ To log out, press log out icon in top right corner.
 
 ## My work
 
-Most of the features and design are implemented as planned. There are still some bugs even though is is live, as I ran out of time for really proper testing. Please do not hesitate to let me know if you find something.
+Most of the features and design are implemented as planned. Focus in design and coding has been on mobile, as this would be the most likely way the user will interact with the app. There are still some bugs even though is is live, as I ran out of time for really proper testing. Please do not hesitate to let me know if you find something.
 
 Known issues:
 Update post form and Update profileform: 
@@ -59,6 +62,12 @@ Follow and unfollow buttons are present at the same time.
 It is a try and fail mission.. Atleast there is only two options.
 
 I struggled the most with hooks, and figuring out how to use them correctly. Defenitily something I will work more on. Delete button finally worked, and when I understood that, it made it easier to set up put request.Also the put requests in itself gave me something to dwell about, until I realised I needed to send an empty body. Conditional rendering did give me some grey hair, espesiallyt since I could not solve how to set up the correct follow/unfollow button.
+
+I have mostly followed design and styleguide, but with some adjustments as it is (atleast for me) easier to see what works when the site is actually up and running. The buttons are the one were it is not a conscience choice, I just could not make them work the way I wanted. They are still functional and present though.
+
+Besides styling with react-bootstrap, I have only used css, one file. I do realize that in the long run it might not be the most user friendly, but currently it is so small that splitting it up seemes unneccesary.
+
+Live site has been tested with w3c markup, color oracle and siteimprove, no major concerns about user experience/user friendliness (besides known issues mentioned above).
 
 ## Features to come
 

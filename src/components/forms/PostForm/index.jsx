@@ -65,6 +65,7 @@ function PostForm() {
           <form onSubmit={handleSubmit(onSubmit)}>
             {loginError && <FormError>{loginError}</FormError>}
             <fieldset disabled={submitting}>
+              <h1>New Post</h1>
               <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control {...register('title')} placeholder = "Title" />

@@ -29,7 +29,7 @@ function Profiles() {
                     <Card.Body>
                         <Row>
                             <Col xs={5} md={4}>
-                                <Card.Img className="avatarImage avatarImageLarge" src={profile.avatar}/>  
+                                <Card.Img className="avatarImage avatarImageLarge" src={profile.avatar} alt={profile.avatar} />  
                             </Col> 
                             <Col xs={7} md={4}>
                                     <Card.Title><p>{profile.name}</p></Card.Title>
