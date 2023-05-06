@@ -28,11 +28,13 @@ function Navigation() {
     <Navbar expand="lg mb-2">
       <Container>
         <Navbar.Brand href="/posts">Some</Navbar.Brand>
-        <Nav className="me-auto d-none d-md-block sticky-top">
-          <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
-          <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
-          <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
-          <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>     
+        <Nav className="d-none d-md-block sticky-top">
+          <Stack direction="horizontal" gap={4} className='mx-auto'>
+            <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
+            <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
+            <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
+            <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>     
+          </Stack>
         </Nav>
         <Link to="/search">
           <Form className="d-flex d-none d-lg-block">
@@ -47,11 +49,11 @@ function Navigation() {
         <div onClick={logout}><img src={Logout} alt="Icon for logout" className="icons"/></div>
         <Nav className="navbar fixed-bottom d-md-none">
           <Stack direction="horizontal" gap={4} className='mx-auto'>
-          <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
-          <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
-          <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
-          <Link to="/search"><img src={Search} alt="Icon for search" className="icons"/></Link>
-          <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>
+            <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
+            <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
+             <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
+            <Link to="/search"><img src={Search} alt="Icon for search" className="icons"/></Link>
+            <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>
           </Stack>
         </Nav>
        </Container>
