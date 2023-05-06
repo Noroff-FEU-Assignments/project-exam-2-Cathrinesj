@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from 'axios';
 import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
-import { Container, Form } from "react-bootstrap";
+import { Card, Container, Form } from "react-bootstrap";
 
 const url = API + 'posts';
 
@@ -59,25 +59,32 @@ function PostForm() {
   
   return (
     <>
-    <Container className="opacity">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <Form.Group className="mb-3">
-            <Form.Control {...register('title')} placeholder = "Title" />
-            {errors.title && <FormError>{errors.title.message} </FormError>}
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control {...register('body')} placeholder = "Text" />
-            {errors.body && <FormError>{errors.body.message} </FormError>}
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control {...register('media')} placeholder = "Image (URL - link)" />
-            {errors.media && <FormError>{errors.media.message} </FormError>}
-          </Form.Group>
-          <button>{submitting ? 'Posting'  : 'Post'} </button>
-        </fieldset>
-      </form>
+    <Container >
+      <Card className="opacity">
+        <Card.Body>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {loginError && <FormError>{loginError}</FormError>}
+            <fieldset disabled={submitting}>
+              <Form.Group className="mb-3">
+                <Form.Label>Title</Form.Label>
+                <Form.Control {...register('title')} placeholder = "Title" />
+                {errors.title && <FormError>{errors.title.message} </FormError>}
+              </Form.Group>
+              <Form.Group className="mb-3">
+                 <Form.Label>Text</Form.Label>
+                <Form.Control {...register('body')} placeholder = "Text" />
+                {errors.body && <FormError>{errors.body.message} </FormError>}
+              </Form.Group>
+              <Form.Group className="mb-3">
+                 <Form.Label>Image (URL-Link)</Form.Label>
+                <Form.Control {...register('media')} placeholder = "Image (URL - link)" />
+                {errors.media && <FormError>{errors.media.message} </FormError>}
+              </Form.Group>
+              <button>{submitting ? 'Posting'  : 'Post'} </button>
+            </fieldset>
+          </form>
+        </Card.Body>
+      </Card>
     </Container>
     </>
     

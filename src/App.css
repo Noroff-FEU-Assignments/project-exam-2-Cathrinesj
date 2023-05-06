@@ -32,6 +32,9 @@ a {
   color: #062B16;
 }
 
+.navbar {
+  background: #C3DEE6;
+}
 .navbar-brand {
   font-family: 'Merienda', cursive, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
@@ -41,7 +44,7 @@ a {
 }
 
 
-.card, .card-img {
+.card, .card-img, .card-img-top {
   border-radius: 0;
   border: 0;
 }

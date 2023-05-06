@@ -6,12 +6,12 @@ import Profiles from "../../components/Profiles";
 
 function ProfilesPage() {
     return (
-    <> 
-        <Navigation/>
-        <Container fluid="md">
-            <Heading title="Profiles"/>
-            <Profiles/>
-        </Container>
+    <>
+    <Navigation/>
+    <Container fluid="md">
+        <Heading title="Profiles"/>
+        <Profiles/>
+    </Container>
     </>
     );
 }

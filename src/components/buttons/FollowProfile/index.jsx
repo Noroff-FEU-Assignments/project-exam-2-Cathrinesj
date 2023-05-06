@@ -34,7 +34,7 @@ const followProfile = () => {
     console.log(options)
 }
 return (
-    <button onClick={followProfile}>Follow</button>
+    <button onClick={followProfile} className="mt-2 mb-2 me-2">Follow</button>
 )
 }
 

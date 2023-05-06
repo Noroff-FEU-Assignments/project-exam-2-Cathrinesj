@@ -60,23 +60,35 @@ if (author === loggedInUser) {
 
 return (
     <>
-   <Card className="opacity">    
+    <Card className="opacity mb-2">
         <Row>
-        <Card.Body>
-            <Col xs={12} md={4} >
+            <Card.Body>
                 <Card.Title><h1>{data.title}</h1></Card.Title>
                 <Stack direction="horizontal" gap={2}>
                     <Card.Img className="avatarImageSmall" src={data.author.avatar} alt="avatar image for the user"/>
                     <Card.Text>By: {data.author.name}</Card.Text>  
                 </Stack>
-                <ModalEditPost/>
-            </Col>
+            </Card.Body>
+        </Row>
+    </Card>
+    <Card className="opacity mb-2">
+        <Row>
+            <Card.Body>
+                <Col xs={12} md={4} >
+                    <ModalEditPost/>
+                </Col>
+            </Card.Body>
+        </Row>
+    </Card>
+   <Card className="opacity mb-2">    
+        <Row>
+        <Card.Body>
             <Col xs={12} md={8}>
                 <Card.Img variant="top" src={data.media} alt="image relating to the post"/>
                 <Card.Text>{data.body}</Card.Text>
                 <Stack direction="horizontal" gap={3}>
                     <Card.Title><LikeIcon/>{data._count.reactions}</Card.Title>
-                    <Card.Title><img src={Comments} alt="Icon for comment" className="icons"/>{data._count.comments} </Card.Title>
+                    <Card.Title><img src={Comments} alt="Icon for comments" className="icons"/>{data._count.comments} </Card.Title>
                 </Stack>
             </Col>
         </Card.Body>
@@ -85,20 +97,23 @@ return (
     </>
 )
 }
-
-return (
+   return (
     <>
-   <Card className="opacity">    
+    <Card className="opacity mb-2">
         <Row>
-        <Card.Body>
-            <Col xs={12}>
+            <Card.Body>
                 <Card.Title><h1>{data.title}</h1></Card.Title>
                 <Stack direction="horizontal" gap={2}>
                     <Card.Img className="avatarImageSmall" src={data.author.avatar} alt="avatar image for the user"/>
                     <Card.Text>By: {data.author.name}</Card.Text>  
                 </Stack>
-            </Col>
-            <Col xs={12}>
+            </Card.Body>
+        </Row>
+    </Card>
+    <Card className="opacity mb-2">    
+        <Row>
+        <Card.Body>
+            <Col xs={12} md={8}>
                 <Card.Img variant="top" src={data.media} alt="image relating to the post"/>
                 <Card.Text>{data.body}</Card.Text>
                 <Stack direction="horizontal" gap={3}>

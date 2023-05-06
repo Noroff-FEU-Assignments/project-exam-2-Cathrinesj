@@ -12,7 +12,7 @@ function PostPage() {
     <Container fluid="md">
         <Post/>
         <CommentForm/>
-        <Card className="opacity">
+        <Card className="opacity mb-2">
             <Card.Body>
                 <Card.Title><h2>Comments</h2></Card.Title>
             </Card.Body>

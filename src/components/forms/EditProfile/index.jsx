@@ -65,14 +65,16 @@ function EditProfileForm() {
         <fieldset disabled={submitting}>
           <h1>Update profile</h1>
           <Form.Group className="mb-3">
+            <Form.Label>Banner (URL-link)</Form.Label>
             <Form.Control {...register('banner')} placeholder = "Banner (URL-link)" />
             {errors.banner && <FormError>{errors.banner.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
+             <Form.Label>Avatar (URL-Link)</Form.Label>
             <Form.Control {...register('avatar')} placeholder = "Avatar (URL-link)" />
             {errors.avatar && <FormError>{errors.avatar.message} </FormError>}
           </Form.Group>
-          <button>{submitting ? 'Updating'  : 'Update'} </button>
+          <button className="mb-2">{submitting ? 'Updating'  : 'Update Profile'} </button>
          </fieldset>
       </form>
     </Container>

@@ -64,22 +64,27 @@ function RegisterForm() {
             {loginError && <FormError>{loginError}</FormError>}
             <fieldset disabled={submitting}>
               <Form.Group>
+                <Form.Label>Username</Form.Label>
                 <Form.Control
                   {...register('name')} placeholder="Username" type="name"/>
                   {errors.name && <FormError>{errors.name.message} </FormError>}
               </Form.Group>
               <Form.Group>
+                <Form.Label>E-mail</Form.Label>
                 <Form.Control {...register('email')} placeholder = "Email (must be stud.noroff or noroff e-mail)"/>
                 {errors.email && <FormError>{errors.email.message} </FormError>}
               </Form.Group>
               <Form.Group>
+                <Form.Label>Password</Form.Label>
                 <Form.Control {...register('password')} placeholder="Password" type="password"/>
                 {errors.password && <FormError>{errors.password.message} </FormError>}
               </Form.Group>
               <Form.Group>
+                <Form.Label>Avatar</Form.Label>
                 <Form.Control {...register('avatar')} placeholder="Avatar (URL-Link)" type="avatar"/>
               </Form.Group>
-              <Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Banner</Form.Label>
                 <Form.Control {...register('banner')} placeholder="Banner Image (URL-Link)" type="banner"/>
               </Form.Group>
               <button>{submitting ? 'Registering'  : 'Register'} </button>

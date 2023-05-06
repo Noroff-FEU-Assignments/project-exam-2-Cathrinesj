@@ -31,7 +31,7 @@ const unfollowProfile = () => {
     })
 }
 return (
-    <button onClick={unfollowProfile}>Unfollow</button>
+    <button onClick={unfollowProfile} className="m-2">Unfollow</button>
 )
 }
 

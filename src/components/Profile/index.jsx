@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-
 import FollowProfile from "../buttons/FollowProfile";
 import UnfollowProfile from "../buttons/UnfollowProfile";
 import ModalEditProfile from "../modals/ModalEditProfile";
 import AuthContext from "../../context/AuthContext";
 import LoadingSpinner from "../common/Spinner";
 import GeneralError from "../common/GeneralError";
+import { Col, Row } from "react-bootstrap";
 
 
 function Profile() {
@@ -59,21 +59,25 @@ if (isError) {
 if (id === loggedInUser) {
 
 return (
-    <Card style={{ width: '18rem' }} className="opacity">
-        <Card.Img variant="top" src={data.banner}/>
-        <Card.Body>
-            <Card.Title>{data.name}</Card.Title>
-            <Card.Title>Followers:{data._count.followers}</Card.Title>
-            <Card.Title>Following:{data._count.following}</Card.Title>
-            <ModalEditProfile/>
-        </Card.Body>
-    </Card>
+    <Row xs={12}>
+       <Col >
+          <Card className="opacity mb-2">
+            <Card.Img variant="top" src={data.banner}/>
+                <Card.Body>
+                   <Card.Title>{data.name}</Card.Title>
+                   <Card.Title>Followers:{data._count.followers}</Card.Title>
+                   <Card.Title>Following:{data._count.following}</Card.Title>
+                   <ModalEditProfile/>
+                </Card.Body>
+            </Card>
+        </Col>
+    </Row>    
 )
 } 
 
 
 return (
-    <Card style={{ width: '18rem' }} className="opacity">
+    <Card className="opacity mb-2">
         <Card.Img variant="top" src={data.banner}/>
         <Card.Body>
             <Card.Title>{data.name}</Card.Title>

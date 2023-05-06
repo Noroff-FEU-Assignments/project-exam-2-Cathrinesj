@@ -25,7 +25,7 @@ function Profiles() {
     return (
         <div>
             {data.map((profile) => (
-                <Card  key={profile.name} className="opacity">
+                <Card  key={profile.name} className="opacity mb-2">
                     <Card.Body>
                         <Row>
                             <Col xs={5} md={4}>

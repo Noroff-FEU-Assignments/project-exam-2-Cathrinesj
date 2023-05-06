@@ -71,10 +71,11 @@ function LoginForm() {
                 {errors.email && <FormError>{errors.email.message} </FormError>}
               </Form.Group>
               <Form.Group className="mb-3">
+                <Form.Label>Password</Form.Label>
                 <Form.Control {...register('password')} placeholder="Password" type="password"/>
                 {errors.password && <FormError>{errors.password.message} </FormError>}
               </Form.Group>
-              <button>{submitting ? 'Logging in'  : 'Log In'} </button>
+              <button className="mb-2">{submitting ? 'Logging in'  : 'Log In'} </button>
             </fieldset>
           </form>
           <div>

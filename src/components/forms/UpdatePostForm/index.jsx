@@ -67,18 +67,21 @@ function UpdatePostForm() {
         <fieldset disabled={submitting}>
           <h1>Update post</h1>
           <Form.Group className="mb-3">
+            <Form.Label>Title</Form.Label>
             <Form.Control {...register('title')} placeholder = "Title" />
             {errors.title && <FormError>{errors.title.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Label>Text</Form.Label>
             <Form.Control {...register('body')} placeholder = "Text" />
             {errors.body && <FormError>{errors.body.message} </FormError>}
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Label>Image (URL-Link)</Form.Label>
             <Form.Control {...register('media')} placeholder = "Image (URL - link)" />
             {errors.media && <FormError>{errors.media.message} </FormError>}
           </Form.Group>
-          <button>{submitting ? 'Updating'  : 'Update'} </button>
+          <button className="mb-2 me-2">{submitting ? 'Updating'  : 'Update Post'} </button>
           <DeletePost/>
          </fieldset>
       </form>

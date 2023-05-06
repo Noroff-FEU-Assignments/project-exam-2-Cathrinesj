@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../../constants/API";
 import { Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row, Stack } from "react-bootstrap";
 import LoadingSpinner from "../common/Spinner";
 import GeneralError from "../common/GeneralError";
+import Comments from '../../icons/ThumbsUp.svg';
+import ThumpsUp from '../../icons/Comments.svg';
+import Comment from '../../icons/Comment.svg';
 
 function ProfilePosts() {
     const [data, setData] = useState(null);
@@ -51,19 +54,28 @@ console.log(data);
 
 return (
     <div>
-            {data.map((post) => (
-                <Link to={`/post/${post.id}`} key={post.id}>
-                    <Card style={{ width: '18rem' }} className="opacity">
-                        <Card.Img variant="top" src={post.media}/>
+        {data.map((post) => (
+        <Link to={`/post/${post.id}`} key={post.id}>
+            <Card className="opacity mb-2">
+                <Row>
+                    <Col xs={12}>
+                        <Card.Img variant="top" src={post.media} alt="image about the post"/>
                         <Card.Body>
-                            <Card.Title>{post.title}</Card.Title>
+                            <Card.Title><h2>{post.title}</h2></Card.Title>
                             <Card.Text>{post.body}</Card.Text>
+                            <Stack direction="horizontal" gap={3}>
+                                <Card.Title><img src={ThumpsUp} alt="Icons for reactions" className="icons"></img>{post._count.comments} </Card.Title>
+                                <Card.Title><img src={Comments} alt="Icons for comments" className="icons"></img>{post._count.comments} </Card.Title>
+                                <Card.Title><img src={Comment} alt="Icons for comment" className="icons"></img>{post._count.comments} </Card.Title>
+                            </Stack>
                         </Card.Body>
-                    </Card>
-                </Link>  
-            ) )}
+                    </Col>
+                </Row>
+            </Card>
+        </Link>
+        ) )}
         </div>
-)
-}
+        )
+    }
 
 export default ProfilePosts;

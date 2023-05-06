@@ -51,13 +51,13 @@ console.log(data);
 return (
     <div>
         {data.comments.map((comment) => (
-                <Card className="opacity" key={comment.id}>    
+                <Card className="opacity mb-2" key={comment.id}>    
                 <Card.Body>
                     <Stack direction="horizontal" gap={2}>
                         <Card.Img className="avatarImageSmall" src={comment.author.avatar}></Card.Img>
                         <Card.Text>{comment.author.name}</Card.Text>   
                     </Stack>    
-                    <Card.Text>{comment.body}</Card.Text>                 
+                    <Card.Text> - {comment.body}</Card.Text>                 
                 </Card.Body>
             </Card>  
         ) )}

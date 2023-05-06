@@ -59,15 +59,15 @@ function CommentForm() {
   
   return (
     <>
-    <Container className="opacity">
+    <Container className="opacity mb-2">
       <form onSubmit={handleSubmit(onSubmit)}>
         {loginError && <FormError>{loginError}</FormError>}
         <fieldset disabled={submitting}>
-          <Form.Group className="mb-3">
+          <Form.Group className="mb-3 mt-3">
             <Form.Control {...register('body')} placeholder = "Comment" />
             {errors.body && <FormError>{errors.body.message} </FormError>}
           </Form.Group>
-          <button>{submitting ? 'Commenting'  : 'Comment'} </button>
+          <button className="mb-2">{submitting ? 'Commenting'  : 'Comment'} </button>
         </fieldset>
       </form>
     </Container>
