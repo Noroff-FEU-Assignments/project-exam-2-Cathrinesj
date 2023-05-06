@@ -21,7 +21,7 @@ function ModalEditPost() {
             </Button>
             ))}
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton className="opacity">
             <Modal.Title>Update Post</Modal.Title>
             </Modal.Header>
             <Modal.Body><UpdatePostForm/></Modal.Body>

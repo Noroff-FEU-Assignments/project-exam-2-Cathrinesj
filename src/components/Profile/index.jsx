@@ -67,21 +67,8 @@ return (
         </Card.Body>
     </Card>
 )
-}
+} 
 
-if (data.following === loggedInUser)
-
-return (
-    <Card style={{ width: '18rem' }} className="opacity">
-        <Card.Img variant="top" src={data.banner}/>
-        <Card.Body>
-            <Card.Title>{data.name}</Card.Title>
-            <Card.Title>Followers:{data._count.followers}</Card.Title>
-            <Card.Title>Following:{data._count.following}</Card.Title>
-            <UnfollowProfile/>
-        </Card.Body>
-    </Card>
-)
 
 return (
     <Card style={{ width: '18rem' }} className="opacity">
@@ -91,9 +78,11 @@ return (
             <Card.Title>Followers:{data._count.followers}</Card.Title>
             <Card.Title>Following:{data._count.following}</Card.Title>
             <FollowProfile/>
+            <UnfollowProfile/>
         </Card.Body>
     </Card>
 )
+
 }
 
 export default Profile;

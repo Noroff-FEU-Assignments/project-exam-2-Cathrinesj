@@ -38,7 +38,7 @@ function Profiles() {
                             </Col>
                             <Col xs={6} md={4}>
                                 <Link to={`/profile/${profile.name}`}>
-                                    <Button variant="primary">View</Button>
+                                    <Button>View</Button>
                                 </Link>   
                             </Col>          
                         </Row>  

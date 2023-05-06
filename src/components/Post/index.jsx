@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import ModalEditPost from "../modals/ModalEditPost";
 import LikeIcon from "../icons/LikeIcon";
-
-
-
+import { Col, Row, Stack } from "react-bootstrap";
+import Comments from '../../icons/Comments.svg'
 
 function Post() {
     const [auth] = useContext(AuthContext);
     const accessToken = auth.accessToken;
+    const loggedInUser = auth.name;
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -52,18 +52,60 @@ if (isError) {
     return <div>Error</div>;
 }
 
+let author  = data.author.name;
+
+if (author === loggedInUser) {
+
 return (
     <>
    <Card className="opacity">    
+        <Row>
         <Card.Body>
-            <Card.Title>{data.title}</Card.Title>
-            <ModalEditPost/>
-            <Card.Img className="avatarImage" src={data.author.avatar}/>
-            <Card.Text>By: {data.author.name}</Card.Text>
-            <Card.Img variant="top" src={data.media}/>
-            <Card.Text>{data.body}</Card.Text>
-            <LikeIcon/>
+            <Col xs={12} md={4} >
+                <Stack direction="horizontal" gap={2}>
+                    <Card.Img className="avatarImage" src={data.author.avatar} alt="Authors Avatar"/>
+                    <Card.Text>By: {data.author.name}</Card.Text>  
+                </Stack>
+                <Card.Title>{data.title}</Card.Title>
+                <ModalEditPost/>
+            </Col>
+            <Col xs={12} md={8}>
+                <Card.Img variant="top" src={data.media}/>
+                <Card.Text>{data.body}</Card.Text>
+                <Stack direction="horizontal" gap={3}>
+                    <Card.Title><LikeIcon/>{data._count.reactions}</Card.Title>
+                    <Card.Title><img src={Comments} alt="Icon for comment" className="icons"/>{data._count.comments} </Card.Title>
+                </Stack>
+            </Col>
         </Card.Body>
+        </Row>
+    </Card>
+    </>
+)
+}
+
+return (
+    <>
+   <Card className="opacity">    
+        <Row>
+        <Card.Body>
+            <Col xs={12} md={4} >
+                <Stack direction="horizontal" gap={2}>
+                    <Card.Img className="avatarImage" src={data.author.avatar}/>
+                    <Card.Text>By: {data.author.name}</Card.Text>  
+                </Stack>
+                <Card.Title>{data.title}</Card.Title>
+            </Col>
+            <Col xs={12} md={8}>
+                <Card.Img variant="top" src={data.media}/>
+                <Card.Text>{data.body}</Card.Text>
+                <Stack direction="horizontal" gap={3}>
+                    <Card.Title><LikeIcon/>{data._count.reactions}</Card.Title>
+                    <Card.Title><img src={Comments} alt="Icon for comment" className="icons"/>{data._count.comments} </Card.Title>
+                </Stack>
+            </Col>
+        </Card.Body>
+        </Row>
     </Card>
     </>
 )

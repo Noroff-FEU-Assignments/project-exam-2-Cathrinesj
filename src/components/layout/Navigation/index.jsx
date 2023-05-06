@@ -28,11 +28,12 @@ function Navigation() {
     <Container>
     <Navbar.Brand href="/posts">Some</Navbar.Brand>
     <Nav className="me-auto d-none d-lg-block sticky-top opacity-75">
-    <Link to="/profiles"><img src={People} className="icons"/></Link>
-    <Link to="/posts"><img src={Posts} className="icons"/></Link>
-    <Link to="/newPost"><img src={Add} className="icons"/></Link>
-    <Link to={`/profile/${user}`}><img src={Profile} className="icons"/></Link>     
+    <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
+    <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
+    <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
+    <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>     
     </Nav>
+    <Link to="/search">
     <Form className="d-flex d-none d-lg-block">
     <Form.Control
     type="search"
@@ -41,13 +42,14 @@ function Navigation() {
     aria-label="Search"
     />  
     </Form>
-    <div onClick={logout}><img src={Logout} className="icons"/></div>
+    </Link>
+    <div onClick={logout}><img src={Logout} alt="Icon for logout" className="icons"/></div>
     <Nav className="me-auto fixed-bottom d-lg-none d-block justify-content-center opacity">
-    <Link to="/profiles"><img src={People} className="icons"/></Link>
-    <Link to="/posts"><img src={Posts} className="icons"/></Link>
-    <Link to="/newPost"><img src={Add} className="icons"/></Link>
-    <Link to="/search"><img src={Search} className="icons"/></Link>
-    <Link to={`/profile/${user}`}><img src={Profile} className="icons"/></Link>
+    <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
+    <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
+    <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
+    <Link to="/search"><img src={Search} alt="Icon for search" className="icons"/></Link>
+    <Link to={`/profile/${user}`}><img src={Profile} alt="Icon for profile" className="icons"/></Link>
     </Nav>
     </Container>
     </Navbar>

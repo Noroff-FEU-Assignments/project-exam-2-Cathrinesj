@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Stack } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Navigation from "../../components/layout/Navigation";
 import Heading from "../../components/layout/Header";
 import Posts from "../../components/Posts";
@@ -7,13 +7,11 @@ import Posts from "../../components/Posts";
 function HomePage() {
     return (
     <> 
-    <Stack gap={1} >
     <Navigation/>
-    <Container fluid>
+    <Container fluid="md">
         <Heading title="Posts"/>
         <Posts/>
     </Container>
-    </Stack>
     </>
     );
 }
