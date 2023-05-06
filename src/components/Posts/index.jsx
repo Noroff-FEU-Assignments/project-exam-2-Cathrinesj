@@ -7,6 +7,8 @@ import { Col, Row, Stack } from "react-bootstrap";
 import ThumbsUp from '../../icons/ThumbsUp.svg'
 import Comments from '../../icons/Comments.svg'
 import Comment from '../../icons/Comment.svg'
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
 
 function Posts() {
     const { data, isLoading, isError } = useApi(
@@ -14,18 +16,18 @@ function Posts() {
     );
 
     if(isLoading) {
-        return <div>Loading</div>
+        return <LoadingSpinner/>;
     }
 
     if (isError) {
-        return <div>Error</div>
+        return <GeneralError/>;
     }
 
     return (
         <div>
             {data.map((post) => (
                 <Link to={`/post/${post.id}`} key={post.id}>
-                    <Card className="opacity">
+                    <Card className="opacity mb-2">
                         <Row>
                             <Col xs={12} md={4} >
                                 <Card.Img src={post.media}/>
@@ -33,7 +35,7 @@ function Posts() {
                             <Col xs={12} md={8}>
                                 <Card.Body>
                                     <Stack direction="horizontal" gap={2}>
-                                        <Card.Img className="avatarImage"  src={post.author.avatar}></Card.Img>
+                                        <Card.Img className="avatarImageSmall"  src={post.author.avatar}></Card.Img>
                                         <Card.Title><h2>{post.title}</h2></Card.Title>
                                     </Stack>
                                     <Card.Text>{post.body}</Card.Text>

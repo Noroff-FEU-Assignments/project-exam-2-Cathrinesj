@@ -6,6 +6,8 @@ import ModalEditPost from "../modals/ModalEditPost";
 import LikeIcon from "../icons/LikeIcon";
 import { Col, Row, Stack } from "react-bootstrap";
 import Comments from '../../icons/Comments.svg'
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
 
 function Post() {
     const [auth] = useContext(AuthContext);
@@ -45,11 +47,11 @@ useEffect(() => {
 }, [id]);
 
 if (isLoading || !data ) {
-    return <div>Loading</div>;
+    return <LoadingSpinner/>;
 }
 
 if (isError) {
-    return <div>Error</div>;
+    return <GeneralError/>;
 }
 
 let author  = data.author.name;
@@ -62,15 +64,15 @@ return (
         <Row>
         <Card.Body>
             <Col xs={12} md={4} >
+                <Card.Title><h1>{data.title}</h1></Card.Title>
                 <Stack direction="horizontal" gap={2}>
-                    <Card.Img className="avatarImage" src={data.author.avatar} alt="Authors Avatar"/>
+                    <Card.Img className="avatarImageSmall" src={data.author.avatar} alt="avatar image for the user"/>
                     <Card.Text>By: {data.author.name}</Card.Text>  
                 </Stack>
-                <Card.Title>{data.title}</Card.Title>
                 <ModalEditPost/>
             </Col>
             <Col xs={12} md={8}>
-                <Card.Img variant="top" src={data.media}/>
+                <Card.Img variant="top" src={data.media} alt="image relating to the post"/>
                 <Card.Text>{data.body}</Card.Text>
                 <Stack direction="horizontal" gap={3}>
                     <Card.Title><LikeIcon/>{data._count.reactions}</Card.Title>
@@ -89,15 +91,15 @@ return (
    <Card className="opacity">    
         <Row>
         <Card.Body>
-            <Col xs={12} md={4} >
+            <Col xs={12}>
+                <Card.Title><h1>{data.title}</h1></Card.Title>
                 <Stack direction="horizontal" gap={2}>
-                    <Card.Img className="avatarImage" src={data.author.avatar}/>
+                    <Card.Img className="avatarImageSmall" src={data.author.avatar} alt="avatar image for the user"/>
                     <Card.Text>By: {data.author.name}</Card.Text>  
                 </Stack>
-                <Card.Title>{data.title}</Card.Title>
             </Col>
-            <Col xs={12} md={8}>
-                <Card.Img variant="top" src={data.media}/>
+            <Col xs={12}>
+                <Card.Img variant="top" src={data.media} alt="image relating to the post"/>
                 <Card.Text>{data.body}</Card.Text>
                 <Stack direction="horizontal" gap={3}>
                     <Card.Title><LikeIcon/>{data._count.reactions}</Card.Title>

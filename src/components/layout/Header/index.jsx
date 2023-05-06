@@ -3,9 +3,11 @@ import { Card } from "react-bootstrap";
 
 export default function Heading({ title }) {
     return (
-    <Card className="opacity">
-    <h1>{title} </h1>
-    </Card>
+        <Card className="opacity">
+           <Card.Body>
+              <h1>{title}</h1>
+            </Card.Body>
+        </Card>        
     )
 }
 

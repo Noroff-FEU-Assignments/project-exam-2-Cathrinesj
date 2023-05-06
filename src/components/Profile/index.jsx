@@ -6,6 +6,8 @@ import FollowProfile from "../buttons/FollowProfile";
 import UnfollowProfile from "../buttons/UnfollowProfile";
 import ModalEditProfile from "../modals/ModalEditProfile";
 import AuthContext from "../../context/AuthContext";
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
 
 
 function Profile() {
@@ -47,11 +49,11 @@ useEffect(() => {
 console.log(data);
 
 if (isLoading || !data ) {
-    return <div>Loading</div>;
+    return <LoadingSpinner/>;
 }
 
 if (isError) {
-    return <div>Error</div>;
+    return <GeneralError/>;
 }
 
 if (id === loggedInUser) {

@@ -79,10 +79,11 @@ function UpdatePostForm() {
             {errors.media && <FormError>{errors.media.message} </FormError>}
           </Form.Group>
           <button>{submitting ? 'Updating'  : 'Update'} </button>
+          <DeletePost/>
          </fieldset>
       </form>
     </Container>
-    <DeletePost/>
+    
     </>
     
     )

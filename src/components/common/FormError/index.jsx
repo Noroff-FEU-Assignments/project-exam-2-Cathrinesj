@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default function FormError({children}) {
-    return <div>{children}</div>
+    return <div className='formError'>{children}</div>
 }
 
 FormError.propTypes = {

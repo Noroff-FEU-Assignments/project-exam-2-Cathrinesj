@@ -7,7 +7,7 @@ import axios from 'axios';
 import FormError from "../../common/FormError";
 import { API } from "../../../constants/API"; 
 import AuthContext from "../../../context/AuthContext";
-import { Form } from "react-bootstrap";
+import { Card, Container, Form } from "react-bootstrap";
 import { ReactComponent as ReactLogo } from "../../../images/logo/logo.svg"; 
 
 const url = API + 'auth/register'
@@ -53,38 +53,41 @@ function RegisterForm() {
 
   return (
     <>
-    <Link to="/*">
-      <ReactLogo/>
-    </Link>
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Register User</h2>
-      {loginError && <FormError>{loginError}</FormError>}
-      <fieldset disabled={submitting}>
-      <Form.Group>
-          <Form.Control
-          {...register('name')} placeholder="Username" type="name"/>
-          {errors.name && <FormError>{errors.name.message} </FormError>}
-        </Form.Group>
-        <Form.Group>
-          <Form.Control {...register('email')} placeholder = "Email (must be stud.noroff or noroff e-mail)"/>
-          {errors.email && <FormError>{errors.email.message} </FormError>}
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-          {...register('password')} placeholder="Password" type="password"/>
-          {errors.password && <FormError>{errors.password.message} </FormError>}
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-          {...register('avatar')} placeholder="Avatar (URL-Link)" type="avatar"/>
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-          {...register('banner')} placeholder="Banner Image (URL-Link)" type="banner"/>
-        </Form.Group>
-        <button>{submitting ? 'Registering'  : 'Register'} </button>
-      </fieldset>
-    </form>
+    <Container>
+      <Card className="opacity">
+        <Card.Body>
+          <Link to="/*">
+            <ReactLogo/>
+          </Link>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>Register User</h2>
+            {loginError && <FormError>{loginError}</FormError>}
+            <fieldset disabled={submitting}>
+              <Form.Group>
+                <Form.Control
+                  {...register('name')} placeholder="Username" type="name"/>
+                  {errors.name && <FormError>{errors.name.message} </FormError>}
+              </Form.Group>
+              <Form.Group>
+                <Form.Control {...register('email')} placeholder = "Email (must be stud.noroff or noroff e-mail)"/>
+                {errors.email && <FormError>{errors.email.message} </FormError>}
+              </Form.Group>
+              <Form.Group>
+                <Form.Control {...register('password')} placeholder="Password" type="password"/>
+                {errors.password && <FormError>{errors.password.message} </FormError>}
+              </Form.Group>
+              <Form.Group>
+                <Form.Control {...register('avatar')} placeholder="Avatar (URL-Link)" type="avatar"/>
+              </Form.Group>
+              <Form.Group>
+                <Form.Control {...register('banner')} placeholder="Banner Image (URL-Link)" type="banner"/>
+              </Form.Group>
+              <button>{submitting ? 'Registering'  : 'Register'} </button>
+            </fieldset>
+          </form>
+        </Card.Body>
+      </Card>
+    </Container>
     </>
   )
 }

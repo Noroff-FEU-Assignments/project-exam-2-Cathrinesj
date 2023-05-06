@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
+import { Stack } from "react-bootstrap";
 
 function PostComments() {
     const [data, setData] = useState(null);
@@ -36,11 +39,11 @@ useEffect(() => {
 }, [id]);
 
 if (isLoading || !data ) {
-    return <div>Loading</div>;
+    return <LoadingSpinner/>;
 }
 
 if (isError) {
-    return <div>Error</div>;
+    return <GeneralError/>;
 }
 
 console.log(data);
@@ -50,6 +53,10 @@ return (
         {data.comments.map((comment) => (
                 <Card className="opacity" key={comment.id}>    
                 <Card.Body>
+                    <Stack direction="horizontal" gap={2}>
+                        <Card.Img className="avatarImageSmall" src={comment.author.avatar}></Card.Img>
+                        <Card.Text>{comment.author.name}</Card.Text>   
+                    </Stack>    
                     <Card.Text>{comment.body}</Card.Text>                 
                 </Card.Body>
             </Card>  

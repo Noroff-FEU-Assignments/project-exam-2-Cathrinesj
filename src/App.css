@@ -29,16 +29,29 @@ p {
 
 a {
   text-decoration: none; 
+  color: #062B16;
 }
 
 .navbar-brand {
   font-family: 'Merienda', cursive, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-.btn {
+.formError {
+  color: red;
+}
+
+
+.card, .card-img {
+  border-radius: 0;
+  border: 0;
+}
+
+.btn, button {
   border-radius: 0;
   border: 4px solid #062B16;
+  color: #062B16;
   background-color: transparent;
+  width: fit-content; 
   font-family: 'Ubuntu', sans-serif, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -54,10 +67,26 @@ a {
   height: 36px;
 }
 
-.avatarImage {
+.avatarImageSmall {
   border-radius: 50%;
   width: 50px;
   height: 50px; 
   vertical-align: middle;
 }
+
+.avatarImage {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px; 
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .avatarImageLarge { 
+    width: 200px;
+    height: 200px; 
+  }
+}
+
+
 

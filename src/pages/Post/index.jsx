@@ -1,17 +1,24 @@
 import React from "react";
 import Navigation from "../../components/layout/Navigation";
 import Post from "../../components/Post";
-import PostComments from "../../components/PostComments/indes";
+import PostComments from "../../components/PostComments";
 import CommentForm from "../../components/forms/CommentForm";
+import { Card, Container } from "react-bootstrap";
 
 function PostPage() {
     return (
     <> 
     <Navigation/>
-    <Post/>
-    <CommentForm/>
-    <h2 className="opacity">Comments</h2>
-    <PostComments/>
+    <Container fluid="md">
+        <Post/>
+        <CommentForm/>
+        <Card className="opacity">
+            <Card.Body>
+                <Card.Title><h2>Comments</h2></Card.Title>
+            </Card.Body>
+        </Card>
+        <PostComments/>
+    </Container>
     </>
     );
 }

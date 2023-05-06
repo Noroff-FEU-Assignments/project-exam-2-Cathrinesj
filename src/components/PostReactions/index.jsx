@@ -6,6 +6,8 @@ import { Stack } from "react-bootstrap";
 import ThumbsUp from '../../icons/ThumbsUp.svg'
 import Comments from '../../icons/Comments.svg'
 import Comment from '../../icons/Comment.svg'
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
 
 function PostReactions() {
     const [data, setData] = useState(null);
@@ -41,11 +43,11 @@ useEffect(() => {
 }, [id]);
 
 if (isLoading || !data ) {
-    return <div>Loading</div>;
+    return <LoadingSpinner/>;
 }
 
 if (isError) {
-    return <div>Error</div>;
+    return <GeneralError/>;
 }
 
 console.log(data);

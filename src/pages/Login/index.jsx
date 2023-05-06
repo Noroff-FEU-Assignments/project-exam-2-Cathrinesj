@@ -3,8 +3,8 @@ import LoginForm from "../../components/forms/LoginForm";
 
 function LogInPage() {
     return (
-        <LoginForm/>
-        )
+    <LoginForm/>
+    )
 }
 
 export default LogInPage;

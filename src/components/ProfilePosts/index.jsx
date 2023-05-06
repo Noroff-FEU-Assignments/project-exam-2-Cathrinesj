@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { API } from "../../constants/API";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
+import LoadingSpinner from "../common/Spinner";
+import GeneralError from "../common/GeneralError";
 
 function ProfilePosts() {
     const [data, setData] = useState(null);
@@ -38,11 +40,11 @@ useEffect(() => {
 }, [id]);
 
 if (isLoading || !data ) {
-    return <div>Loading</div>;
+    return <LoadingSpinner/>;
 }
 
 if (isError) {
-    return <div>Error</div>;
+    return <GeneralError/>;
 }
 
 console.log(data);

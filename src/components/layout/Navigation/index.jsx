@@ -27,7 +27,7 @@ function Navigation() {
     <Navbar expand="lg opacity">
     <Container>
     <Navbar.Brand href="/posts">Some</Navbar.Brand>
-    <Nav className="me-auto d-none d-lg-block sticky-top opacity-75">
+    <Nav className="me-auto d-none d-md-block sticky-top opacity-75">
     <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
     <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
     <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
@@ -44,7 +44,7 @@ function Navigation() {
     </Form>
     </Link>
     <div onClick={logout}><img src={Logout} alt="Icon for logout" className="icons"/></div>
-    <Nav className="me-auto fixed-bottom d-lg-none d-block justify-content-center opacity">
+    <Nav className="me-auto fixed-bottom d-md-none d-block justify-content-center opacity">
     <Link to="/profiles"><img src={People} alt="Icon for profiles" className="icons"/></Link>
     <Link to="/posts"><img src={Posts} alt="Icon for posts" className="icons"/></Link>
     <Link to="/newPost"><img src={Add} alt="Icon for adding new post" className="icons"/></Link>
