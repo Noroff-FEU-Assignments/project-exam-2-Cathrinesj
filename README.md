@@ -54,31 +54,38 @@ To log out, press log out icon in top right corner.
 Most of the features and design are implemented as planned. Focus in design and coding has been on mobile, as this would be the most likely way the user will interact with the app. There are still some bugs even though is is live, as I ran out of time for really proper testing. Please do not hesitate to let me know if you find something.
 
 Known issues:
+
 Update post form and Update profileform: 
-Does not take already existing information with it. 
-This means that is you send a emtpy field in, whatever was there will be deleted!
+Does not take already existing information with it. This means that is you send a emtpy field in, whatever was there will be deleted!
 
 Follow and unfollow buttons are present at the same time. 
 It is a try and fail mission.. Atleast there is only two options.
 
-I struggled the most with hooks, and figuring out how to use them correctly. Defenitily something I will work more on. Delete button finally worked, and when I understood that, it made it easier to set up put request.Also the put requests in itself gave me something to dwell about, until I realised I needed to send an empty body. Conditional rendering did give me some grey hair, espesiallyt since I could not solve how to set up the correct follow/unfollow button.
+I tried to set up redirect to /* from all sites if you are not logged in. This has not worked as planned, an currently site can only be accesed through login form (which is now /*(Homepage)). All other urls will be empty if you are not logged in. Plan is to set posts as homepage, as this is the natural homepage (Feed of post would be what you expect from other social media platforms).
+
+I struggled the most with hooks, and figuring out how to use them correctly. Defenitily something I will work more on. Delete button finally worked, and when I understood that, it made it easier to set up the other put requests. Even so the put requests in itself gave me something to dwell about, until I realised I needed to send an empty body for some of them. Conditional rendering did give me some grey hair, espesiallyt since I could not solve how to set up the correct follow/unfollow button.
+They are therefore currently both present. If you press the "wrong" one, nothing will happen, if you press "correct" site will reload and new count will be present.
 
 I have mostly followed design and styleguide, but with some adjustments as it is (atleast for me) easier to see what works when the site is actually up and running. The buttons are the one were it is not a conscience choice, I just could not make them work the way I wanted. They are still functional and present though.
 
 Besides styling with react-bootstrap, I have only used css, one file. I do realize that in the long run it might not be the most user friendly, but currently it is so small that splitting it up seemes unneccesary.
 
-Live site has been tested with w3c markup, color oracle and siteimprove, no major concerns about user experience/user friendliness (besides known issues mentioned above).
+Live site has been tested with w3c markup, color oracle and siteimprove, no major concerns found.
 
 ## Features to come
 
 Already planned and designed:
-Search for tags
-Filter for Tags
+
+Fix the unfollo/follow buttons,
+solve the redirect when not logged in,
+Search for tags,
+Filter for Tags,
 Filter for follows 
 
 Further in the future:
-Search for post and profiles
-Comment on another comment
+
+Search for post and profiles,
+Comment on another comment,
 View who a profile is following
 
 ## Resources
